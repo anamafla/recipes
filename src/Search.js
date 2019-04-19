@@ -9,9 +9,6 @@ function Search() {
   const APP_ID = process.env.REACT_APP_ID;
   const APP_KEY = process.env.REACT_APP_KEY;
 
-  console.log("APP_ID", APP_ID);
-  console.log("APP_KEY", APP_KEY);
-
   const handleInputChange = e => {
     setQuery(e.target.value);
   };
@@ -24,7 +21,7 @@ function Search() {
   const getRecipes = () => {
     return axios
       .get(
-        `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}%20&from=0&to=3&calories=591-722&health=alcohol-free`
+        `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}%20&from=0&to=6&calories=591-722&health=alcohol-free`
       )
       .then(response => {
         const results = response.data.hits;
@@ -37,19 +34,42 @@ function Search() {
   };
 
   return (
-    <div className="row  search">
-      <form onSubmit={handleOnSubmit}>
-        <h2>What do you want to cook</h2>
-        <input
-          type="text"
-          name="query"
-          value={query}
-          onChange={handleInputChange}
-        />
-        <button type="submit" className="btn btn-primary">
-          Search
-        </button>
-      </form>
+    <div>
+      <header className="masthead text-white text-center">
+        <div className="overlay" />
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-9 mx-auto">
+              <h1 className="mb-5">What do you want to cook?</h1>
+            </div>
+            <div className="col-md-10 col-lg-8 col-xl-7 mx-auto">
+              <form onSubmit={handleOnSubmit}>
+                <div className="form-row">
+                  <div className="col-12 col-md-9 mb-2 mb-md-0">
+                    <input
+                      type="text"
+                      name="query"
+                      value={query}
+                      onChange={handleInputChange}
+                      className="form-control form-control-lg"
+                      placeholder="Enter the recipe that you are looking"
+                    />
+                  </div>
+                  <div className="col-12 col-md-3">
+                    <button
+                      type="submit"
+                      className="btn btn-block btn-lg btn-primary"
+                    >
+                      Search
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </header>
+
       {results && <Results data={results} />}
     </div>
   );
