@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Results from "./Results";
+import Spinner from "./Spinner";
 
 function Search() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState(null);
+  const [healthLabels, setHealthLabels] = useState([]);
 
   const APP_ID = process.env.REACT_APP_ID;
   const APP_KEY = process.env.REACT_APP_KEY;
@@ -12,6 +14,8 @@ function Search() {
   const handleInputChange = e => {
     setQuery(e.target.value);
   };
+
+  const handleHealthLabels = () => {};
 
   const handleOnSubmit = e => {
     e.preventDefault();
@@ -64,13 +68,35 @@ function Search() {
                     </button>
                   </div>
                 </div>
+                <div className="form-row">
+                  <div className="form-group form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="exampleCheck1"
+                    />
+                    <label className="form-check-label" for="exampleCheck1">
+                      Vegetarian
+                    </label>
+                  </div>
+                  <div className="form-group form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="exampleCheck2"
+                    />
+                    <label className="form-check-label" for="exampleCheck2">
+                      Vegan
+                    </label>
+                  </div>
+                </div>
               </form>
             </div>
           </div>
         </div>
       </header>
 
-      {results && <Results data={results} />}
+      {results ? <Results data={results} /> : <Spinner />}
     </div>
   );
 }

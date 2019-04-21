@@ -7,7 +7,7 @@ function Results(props) {
 
   return (
     <>
-      <div className="results d-flex flex-row">
+      <div className="results ">
         {results &&
           results.map(item => (
             <div className="card recipe-card col-md-4">
@@ -17,8 +17,13 @@ function Results(props) {
                 alt={item.recipe.label}
               />
               <div className="card-body">
-                <h5>{item.recipe.label}</h5>
+                <p>{item.recipe.label}</p>
               </div>
+              {item.recipe.healthLabels.map(healthLabel => (
+                <span>
+                  <small>{healthLabel}</small>
+                </span>
+              ))}
             </div>
           ))}
       </div>
