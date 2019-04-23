@@ -25,7 +25,7 @@ function Search() {
   const getRecipes = () => {
     return axios
       .get(
-        `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}%20&from=0&to=6&calories=591-722&health=alcohol-free`
+        `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}%20&from=0&to=10&calories=591-722&health=alcohol-free`
       )
       .then(response => {
         const results = response.data.hits;
