@@ -7,6 +7,8 @@ function Search() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState(null);
   const [healthLabels, setHealthLabels] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const APP_ID = process.env.REACT_APP_ID;
   const APP_KEY = process.env.REACT_APP_KEY;
@@ -23,6 +25,8 @@ function Search() {
   };
 
   const getRecipes = () => {
+    setIsError(false);
+    setIsLoading(true);
     return axios
       .get(
         `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}%20&from=0&to=10&calories=591-722&health=alcohol-free`
@@ -30,10 +34,12 @@ function Search() {
       .then(response => {
         const results = response.data.hits;
         setResults(results);
+        setIsLoading(false);
         console.log("results", results);
       })
       .catch(error => {
         console.log("An error has ocurred");
+        setIsError(true);
       });
   };
 
@@ -95,8 +101,9 @@ function Search() {
           </div>
         </div>
       </header>
+      {isError && <div> Something went wrong... </div>}
 
-      {results ? <Results data={results} /> : <Spinner />}
+      {isLoading ? <Spinner /> : results && <Results data={results} />}
     </div>
   );
 }

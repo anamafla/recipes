@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Recipe(props) {
   const { recipe } = props.recipe;
@@ -15,6 +16,9 @@ export default function Recipe(props) {
             <small>{healthLabel}</small>
           </span>
         ))} */}
+        <Link to={`detail/recipe/${recipe.uri}`} className="btn btn-block">
+          View Ingredients
+        </Link>
       </div>
     </div>
   );

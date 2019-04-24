@@ -1,9 +1,11 @@
 import React from "react";
 
-function DetailCard() {
+function DetailCard(props) {
+  console.log("props", props);
   return (
     <div className="card recipe-card">
-      <img
+      <h1>Detail Card</h1>
+      {/* <img
         className="card-img-top"
         src={item.recipe.image}
         alt={item.recipe.label}
@@ -16,7 +18,7 @@ function DetailCard() {
           <li className="list-group-item"> {ingredient}</li>
         ))}
       </ul>
-      <div className="card-body" />
+      <div className="card-body" /> */}
     </div>
   );
 }
