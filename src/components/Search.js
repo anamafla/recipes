@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import Results from "./Results";
 import Spinner from "./Spinner";
+import { Context } from "../context";
 
-function Search() {
+function Search(props) {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState(null);
   const [healthLabels, setHealthLabels] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
   const APP_ID = process.env.REACT_APP_ID;
   const APP_KEY = process.env.REACT_APP_KEY;
+
+  const [results, setResults] = useContext(Context);
+  console.log("resultsInSearch", results);
 
   const handleInputChange = e => {
     setQuery(e.target.value);
@@ -35,7 +38,6 @@ function Search() {
         const results = response.data.hits;
         setResults(results);
         setIsLoading(false);
-        console.log("results", results);
       })
       .catch(error => {
         console.log("An error has ocurred");
@@ -103,7 +105,16 @@ function Search() {
       </header>
       {isError && <div> Something went wrong... </div>}
 
-      {isLoading ? <Spinner /> : results && <Results data={results} />}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        results && (
+          <Results
+            data={results}
+            handleClickDetails={props.handleClickDetails}
+          />
+        )
+      )}
     </div>
   );
 }

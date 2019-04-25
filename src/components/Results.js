@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import Recipe from "./Recipe";
+import { Context } from "../context";
 
 function Results(props) {
   const results = props.data;
 
+  const resultsTest = useContext(Context);
+  console.log("resultsTest", resultsTest);
+
   return (
     <div className="row">
       {results &&
-        results.map(item => <Recipe recipe={item} key={item.recipe.uri} />)}
+        results.map(item => (
+          <Recipe
+            recipe={item}
+            key={item.recipe.uri}
+            handleClickDetails={props.handleClickDetails}
+          />
+        ))}
     </div>
   );
 }

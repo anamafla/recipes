@@ -1,22 +1,35 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Search from "./components/Search";
 import DetailCard from "./components/DetailCard";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Provider } from "./context";
 
-class App extends Component {
-  render() {
-    return (
+function App() {
+  const [recipe, setRecipe] = useState(null);
+
+  const handleClickDetails = recipeSelected => {
+    setRecipe(recipeSelected);
+  };
+
+  return (
+    <Provider>
       <Router>
         <Switch>
-          <Route exact path="/" component={Search} />
-          <Route exact path="/detail/recipe/:id" component={DetailCard} />
+          <Route
+            exact
+            path="/"
+            render={() => <Search handleClickDetails={handleClickDetails} />}
+          />
 
-          {/* <Search /> */}
+          <Route
+            path="/detail/recipe/:id"
+            render={() => <DetailCard item={recipe} />}
+          />
         </Switch>
       </Router>
-    );
-  }
+    </Provider>
+  );
 }
 
 export default App;

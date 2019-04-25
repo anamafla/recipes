@@ -16,7 +16,11 @@ export default function Recipe(props) {
             <small>{healthLabel}</small>
           </span>
         ))} */}
-        <Link to={`detail/recipe/${recipe.uri}`} className="btn btn-block">
+        <Link
+          to={`/detail/recipe/${recipe.uri}`}
+          className="btn btn-block"
+          onClick={() => props.handleClickDetails(recipe)}
+        >
           View Ingredients
         </Link>
       </div>
