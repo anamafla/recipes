@@ -44,3 +44,18 @@ header.masthead h1 {
     font-size: 3rem;
   }
 }
+
+.text-primary {
+}
+
+.title {
+  /* color: #ffa500; */
+
+  font-family: "Satisfy", cursive;
+}
+
+.intro {
+  /* color: #ffa500; */
+
+  font-family: "Satisfy", cursive;
+}

@@ -9,20 +9,23 @@ export default function Recipe(props) {
       <div className="card mb-4 shadow-sm">
         <img className="card-img-top" src={recipe.image} alt={recipe.label} />
         <div className="card-body">
-          <p>{recipe.label}</p>
+          <h5>
+            {recipe.label.length < 20
+              ? `${recipe.label}`
+              : `${recipe.label.substring(0, 25)}...`}
+          </h5>
         </div>
-        {/* {recipe.healthLabels.map((healthLabel, index) => (
-          <span key={index}>
-            <small>{healthLabel}</small>
-          </span>
-        ))} */}
-        <Link
-          to={`/detail/recipe/${recipe.uri}`}
-          className="btn btn-block"
-          onClick={() => props.handleClickDetails(recipe)}
-        >
-          View Ingredients
-        </Link>
+        <button className="btn">
+          <Link
+            to={`/detail/recipe/${recipe.uri}`}
+            onClick={() => props.handleClickDetails(recipe)}
+          >
+            View more
+          </Link>
+        </button>
+        <div className="card-body">
+          <p>{recipe.source}</p>
+        </div>
       </div>
     </div>
   );

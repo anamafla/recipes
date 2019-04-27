@@ -11,24 +11,24 @@ export function Provider(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  useEffect(() => {
-    const query = "avocado";
+  //   useEffect(() => {
+  //     const query = "avocado";
 
-    axios
-      .get(
-        `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}%20&from=0&to=10&calories=591-722&health=alcohol-free`
-      )
-      .then(response => {
-        const results = response.data.hits;
-        setResults(results);
-        setIsLoading(false);
-        console.log("results", results);
-      })
-      .catch(error => {
-        console.log("An error has ocurred");
-        setIsError(true);
-      });
-  }, []);
+  //     axios
+  //       .get(
+  //         `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}%20&from=0&to=10&calories=591-722&health=alcohol-free`
+  //       )
+  //       .then(response => {
+  //         const results = response.data.hits;
+  //         setResults(results);
+  //         setIsLoading(false);
+  //         console.log("results", results);
+  //       })
+  //       .catch(error => {
+  //         console.log("An error has ocurred");
+  //         setIsError(true);
+  //       });
+  //   }, []);
 
   return (
     <Context.Provider value={[results, setResults]}>

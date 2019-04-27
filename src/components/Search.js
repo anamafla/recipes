@@ -6,7 +6,7 @@ import { Context } from "../context";
 
 function Search(props) {
   const [query, setQuery] = useState("");
-  const [healthLabels, setHealthLabels] = useState([]);
+  const [healthLabels, setHealthLabels] = useState("alcohol-free");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -20,7 +20,11 @@ function Search(props) {
     setQuery(e.target.value);
   };
 
-  const handleHealthLabels = () => {};
+  const handleHealthLabels = e => {
+    e.preventDefault();
+    console.log("e.targel.value", e.target.value);
+    setHealthLabels(e.target.value);
+  };
 
   const handleOnSubmit = e => {
     e.preventDefault();
@@ -32,7 +36,7 @@ function Search(props) {
     setIsLoading(true);
     return axios
       .get(
-        `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}%20&from=0&to=10&calories=591-722&health=alcohol-free`
+        `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}%20&from=0&to=10&calories=591-722&health=${healthLabels}`
       )
       .then(response => {
         const results = response.data.hits;
@@ -52,11 +56,14 @@ function Search(props) {
         <div className="container">
           <div className="row">
             <div className="col-xl-9 mx-auto">
-              <h1 className="mb-5">What do you want to cook?</h1>
+              <h1 className="title mb-5">Recipes Searcher</h1>
+              <h3 className="intro">
+                Find the recipe to fit your lifestyle y health
+              </h3>
             </div>
             <div className="col-md-10 col-lg-8 col-xl-7 mx-auto">
               <form onSubmit={handleOnSubmit}>
-                <div className="form-row">
+                <div className="form-row mb-4">
                   <div className="col-12 col-md-9 mb-2 mb-md-0">
                     <input
                       type="text"
@@ -77,23 +84,27 @@ function Search(props) {
                   </div>
                 </div>
                 <div className="form-row">
-                  <div className="form-group form-check">
+                  <div className="form-group form-check mr-4">
                     <input
                       type="checkbox"
                       className="form-check-input"
-                      id="exampleCheck1"
+                      id="check1"
+                      value="vegetarian"
+                      onChange={handleHealthLabels}
                     />
-                    <label className="form-check-label" for="exampleCheck1">
+                    <label className="form-check-label" htmlFor="check1">
                       Vegetarian
                     </label>
                   </div>
-                  <div className="form-group form-check">
+                  <div className="form-group form-check mr-4">
                     <input
                       type="checkbox"
                       className="form-check-input"
-                      id="exampleCheck2"
+                      id="check2"
+                      value="vegan"
+                      onChange={handleHealthLabels}
                     />
-                    <label className="form-check-label" for="exampleCheck2">
+                    <label className="form-check-label" htmlFor="check2">
                       Vegan
                     </label>
                   </div>

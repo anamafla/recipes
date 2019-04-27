@@ -9,7 +9,7 @@ function Results(props) {
   console.log("resultsTest", resultsTest);
 
   return (
-    <div className="row">
+    <div className="row mt-4">
       {results &&
         results.map(item => (
           <Recipe
