@@ -27,16 +27,18 @@ function Search(props) {
   };
 
   const handleOnSubmit = e => {
+    console.log("submited");
     e.preventDefault();
     getRecipes();
   };
 
   const getRecipes = () => {
+    console.log("consulting API");
     setIsError(false);
     setIsLoading(true);
     return axios
       .get(
-        `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}%20&from=0&to=10&calories=591-722&health=${healthLabels}`
+        `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}%20&from=0&to=15&calories=591-722&health=${healthLabels}`
       )
       .then(response => {
         const results = response.data.hits;
@@ -106,6 +108,54 @@ function Search(props) {
                     />
                     <label className="form-check-label" htmlFor="check2">
                       Vegan
+                    </label>
+                  </div>
+                  <div className="form-group form-check mr-4">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="check3"
+                      value="dairy-free"
+                      onChange={handleHealthLabels}
+                    />
+                    <label className="form-check-label" htmlFor="check3">
+                      Dairy-free
+                    </label>
+                  </div>
+                  <div className="form-group form-check mr-4">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="check4"
+                      value="fat-free"
+                      onChange={handleHealthLabels}
+                    />
+                    <label className="form-check-label" htmlFor="check4">
+                      Fat-free
+                    </label>
+                  </div>
+                  <div className="form-group form-check mr-4">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="check5"
+                      value="low-sugar"
+                      onChange={handleHealthLabels}
+                    />
+                    <label className="form-check-label" htmlFor="check5">
+                      Low-sugar
+                    </label>
+                  </div>
+                  <div className="form-group form-check mr-4">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="check5"
+                      value="gluten-free"
+                      onChange={handleHealthLabels}
+                    />
+                    <label className="form-check-label" htmlFor="check5">
+                      Gluten-free
                     </label>
                   </div>
                 </div>

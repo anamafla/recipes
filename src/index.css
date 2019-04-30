@@ -45,17 +45,40 @@ header.masthead h1 {
   }
 }
 
-.text-primary {
-}
-
 .title {
-  /* color: #ffa500; */
-
   font-family: "Satisfy", cursive;
 }
 
 .intro {
-  /* color: #ffa500; */
-
   font-family: "Satisfy", cursive;
+}
+
+h5.recipe-title:hover {
+  color: #ffa500;
+}
+
+.btn-view {
+  background-color: #ffa500;
+  border-color: #ffa500;
+  color: white;
+}
+
+/* DetailCard */
+.ingredients-section h4 {
+  font-family: "Satisfy", cursive;
+  color: #ffa500;
+}
+
+.nutrition-section h4 {
+  font-family: "Satisfy", cursive;
+  color: #ffa500;
+}
+
+.preparation-section h4 {
+  font-family: "Satisfy", cursive;
+  color: #ffa500;
+}
+
+.fa-check-circle {
+  color: #ffa500;
 }

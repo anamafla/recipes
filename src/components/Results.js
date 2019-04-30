@@ -9,15 +9,17 @@ function Results(props) {
   console.log("resultsTest", resultsTest);
 
   return (
-    <div className="row mt-4">
-      {results &&
-        results.map(item => (
-          <Recipe
-            recipe={item}
-            key={item.recipe.uri}
-            handleClickDetails={props.handleClickDetails}
-          />
-        ))}
+    <div className="container">
+      <div className="row mt-4">
+        {results &&
+          results.map(item => (
+            <Recipe
+              recipe={item}
+              key={item.recipe.uri}
+              handleClickDetails={props.handleClickDetails}
+            />
+          ))}
+      </div>
     </div>
   );
 }

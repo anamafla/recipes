@@ -5,26 +5,29 @@ export default function Recipe(props) {
   const { recipe } = props.recipe;
 
   return (
-    <div className="col-md-3">
-      <div className="card mb-4 shadow-sm">
+    <div className="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+      <div className="card mb-4 shadow-sm ">
         <img className="card-img-top" src={recipe.image} alt={recipe.label} />
         <div className="card-body">
-          <h5>
+          <h5 className="recipe-title">
             {recipe.label.length < 20
               ? `${recipe.label}`
-              : `${recipe.label.substring(0, 25)}...`}
+              : `${recipe.label.substring(0, 15)}...`}
           </h5>
-        </div>
-        <button className="btn">
-          <Link
-            to={`/detail/recipe/${recipe.uri}`}
-            onClick={() => props.handleClickDetails(recipe)}
-          >
-            View more
-          </Link>
-        </button>
-        <div className="card-body">
-          <p>{recipe.source}</p>
+
+          <button className="btn-block btn-view">
+            <Link
+              role="button"
+              to={`/detail/recipe/${recipe.uri}`}
+              onClick={() => props.handleClickDetails(recipe)}
+            >
+              View more
+            </Link>
+          </button>
+
+          <p>
+            <small>{recipe.source}</small>
+          </p>
         </div>
       </div>
     </div>
