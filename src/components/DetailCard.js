@@ -5,31 +5,35 @@ function DetailCard(props) {
   const { item } = props;
   return (
     <>
-      <Link to="/" className="btn btn-dark btn-sm mb-4">
+      <Link to="/" className="btn btn-secondary btn-sm mb-4">
         Go Back
       </Link>
       <div className="container">
         <div className="row mb-4">
-          <div className=" col-sm-6 col-md-6">
+          <div className="col-sm-12 col-md-6">
             <img src={item.image} alt={item.label} />
           </div>
 
-          <div className="preparation-section col-sm-6 col-md-6">
+          <div className="preparation-section col-sm-12 col-md-6">
             <h3>{item.label}</h3>
+            <br />
             <h4>Preparation</h4>
             <p>
               {" "}
-              See full recipe on <a href={item.url}>{item.source} </a>
+              See full recipe on{" "}
+              <a target="_blank" rel="noopener noreferrer" href={item.url}>
+                {item.source}{" "}
+              </a>
             </p>
           </div>
         </div>
 
         <div className="row mb-4">
-          <div className="ingredients-section col-sm-6 col-md-6">
+          <div className="ingredients-section col-sm-12 col-md-6 mb-4">
             <h4>Ingredients</h4>
             <ul className="list-group list-group-flush">
-              {item.ingredientLines.map(ingredient => (
-                <li className="list-group-item">
+              {item.ingredientLines.map((ingredient, index) => (
+                <li className="list-group-item" key={index}>
                   {" "}
                   <i className="far fa-check-circle" /> {ingredient}
                 </li>
@@ -37,32 +41,17 @@ function DetailCard(props) {
             </ul>
           </div>
 
-          <div className="nutrition-section col-sm-6 col-md-6 ">
+          <div className="nutrition-section col-sm-12 col-md-6 ">
             <h4>Nutrition</h4>
-            {/* {item.dietLabels.length > 0 && (
-                <li className="list-group-item">
-                  <strong>Diet Labels: </strong>
-                  {item.dietLabels.map(dietLabel => (
-                    <span>{dietLabel}</span>
-                  ))}
-                </li>
-              )} */}
 
             <ul className="list-group list-group-flush">
               <li className="list-group-item">
                 Calories: <span>{Math.round(item.calories)}</span>
               </li>
-
-              {/* <li>
-                  <strong>Health Labels: </strong>
-                  {item.healthLabels.map(healthLabel => (
-                    <span>{healthLabel}</span>
-                  ))}
-                </li> */}
             </ul>
             <ul className="list-group list-group-flush">
-              {item.digest.slice(0, 3).map(item => (
-                <li className="list-group-item">
+              {item.digest.slice(0, 3).map((item, index) => (
+                <li className="list-group-item" key={index}>
                   <span>{item.label}</span>{" "}
                   <span>{Math.round(item.total)}</span> <span>{item.unit}</span>
                 </li>

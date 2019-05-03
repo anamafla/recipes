@@ -3,10 +3,7 @@ import Recipe from "./Recipe";
 import { Context } from "../context";
 
 function Results(props) {
-  const results = props.data;
-
-  const resultsTest = useContext(Context);
-  console.log("resultsTest", resultsTest);
+  const [results] = useContext(Context);
 
   return (
     <div className="container">

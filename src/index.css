@@ -53,32 +53,48 @@ header.masthead h1 {
   font-family: "Satisfy", cursive;
 }
 
-h5.recipe-title:hover {
-  color: #ffa500;
+h4.recipe-title {
+  font-size: 0.98rem;
 }
 
-.btn-view {
-  background-color: #ffa500;
-  border-color: #ffa500;
+.btn-secondary {
+  background-color: hsl(38.8, 100%, 50%);
+  border-color: hsl(38.8, 100%, 50%);
   color: white;
+}
+
+.btn-secondary:active,
+.btn-secondary:focus,
+.btn-secondary:hover {
+  background-color: hsl(33, 100%, 50%);
+  border-color: hsl(33, 100%, 50%);
+  color: white;
+}
+
+.btn-secondary:active:focus {
+  background-color: hsl(33, 100%, 50%);
+  border-color: hsl(33, 100%, 50%);
+  color: white;
+  -webkit-box-shadow: 0 0 0 0.2rem hsl(30, 100%, 50%) !important;
+  box-shadow: 0 0 0 0.2rem hsl(30, 100%, 50%) !important;
 }
 
 /* DetailCard */
 .ingredients-section h4 {
   font-family: "Satisfy", cursive;
-  color: #ffa500;
+  color: hsl(38.8, 100%, 50%);
 }
 
 .nutrition-section h4 {
   font-family: "Satisfy", cursive;
-  color: #ffa500;
+  color: hsl(38.8, 100%, 50%);
 }
 
 .preparation-section h4 {
   font-family: "Satisfy", cursive;
-  color: #ffa500;
+  color: hsl(38.8, 100%, 50%);
 }
 
 .fa-check-circle {
-  color: #ffa500;
+  color: hsl(38.8, 100%, 50%);
 }
