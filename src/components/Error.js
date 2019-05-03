@@ -3,7 +3,7 @@ import React from "react";
 function Error() {
   return (
     <div className="row justify-content-center mt-4">
-      <p>An error has ocurred...</p>
+      <h4>An error has ocurred...</h4>
     </div>
   );
 }

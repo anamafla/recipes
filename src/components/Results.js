@@ -16,6 +16,10 @@ function Results(props) {
               handleClickDetails={props.handleClickDetails}
             />
           ))}
+
+        {results.length === 0 && (
+          <h4>No matching results. Try a different search.</h4>
+        )}
       </div>
     </div>
   );

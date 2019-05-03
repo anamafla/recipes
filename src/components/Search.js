@@ -37,7 +37,6 @@ function Search(props) {
   const APP_KEY = process.env.REACT_APP_KEY;
 
   const [results, setResults] = useContext(Context);
-  console.log("resultsInSearch", results);
 
   const handleInputChange = e => {
     setQuery(e.target.value);
@@ -77,7 +76,6 @@ function Search(props) {
     }
 
     const url = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}%20&from=0&to=30${queryHealthLabels}`;
-    console.log("url: ", url);
 
     setIsError(false);
     setIsLoading(true);
@@ -117,7 +115,7 @@ function Search(props) {
                       value={query}
                       onChange={handleInputChange}
                       className="form-control form-control-lg"
-                      placeholder="Enter the recipe that you are looking"
+                      placeholder="What are you looking for?"
                     />
                   </div>
                   <div className="col-12 col-md-3">
@@ -129,22 +127,25 @@ function Search(props) {
                     </button>
                   </div>
                 </div>
-                <div className="form-row">
-                  {healthLabels.map((healthLabel, index) => (
-                    <div className="form-group form-check mr-4" key={index}>
-                      <input
-                        type="checkbox"
-                        className="form-check-input"
-                        id={index}
-                        checked={healthLabel.checked}
-                        value={healthLabel.label}
-                        onChange={() => onToggleHealthLabel(index)}
-                      />
-                      <label className="form-check-label" htmlFor={index}>
-                        {healthLabel.label}
-                      </label>
-                    </div>
-                  ))}
+
+                <div className="col-12 col-md-9 mb-2 mb-md-0">
+                  <div className="form-row justify-content-center">
+                    {healthLabels.map((healthLabel, index) => (
+                      <div className="form-group form-check mr-4" key={index}>
+                        <input
+                          type="checkbox"
+                          className="form-check-input"
+                          id={index}
+                          checked={healthLabel.checked}
+                          value={healthLabel.label}
+                          onChange={() => onToggleHealthLabel(index)}
+                        />
+                        <label className="form-check-label" htmlFor={index}>
+                          {healthLabel.label}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </form>
             </div>

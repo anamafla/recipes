@@ -46,7 +46,7 @@ function DetailCard(props) {
 
             <ul className="list-group list-group-flush">
               <li className="list-group-item">
-                Calories: <span>{Math.round(item.calories)}</span>
+                Calories <span>{Math.round(item.calories)}</span>
               </li>
             </ul>
             <ul className="list-group list-group-flush">
