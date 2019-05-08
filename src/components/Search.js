@@ -68,11 +68,12 @@ function Search(props) {
 
     let queryHealthLabels = "";
     if (healthLabelsChecked) {
-      healthLabelsChecked.map(label => {
-        queryHealthLabels = queryHealthLabels
-          .concat("&health=")
-          .concat(label.label);
-      });
+      healthLabelsChecked.map(
+        label =>
+          (queryHealthLabels = queryHealthLabels
+            .concat("&health=")
+            .concat(label.label))
+      );
     }
 
     const url = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}%20&from=0&to=30${queryHealthLabels}`;
@@ -102,7 +103,7 @@ function Search(props) {
             <div className="col-xl-9 mx-auto">
               <h1 className="title mb-5">Recipes Searcher</h1>
               <h3 className="intro">
-                Find the recipe to fit your lifestyle y health
+                Find the recipe to fit your lifestyle and health
               </h3>
             </div>
             <div className="col-md-10 col-lg-8 col-xl-7 mx-auto">

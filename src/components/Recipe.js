@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Recipe(props) {
+function Recipe(props) {
   const { recipe } = props.recipe;
 
   return (
@@ -33,3 +33,5 @@ export default function Recipe(props) {
     </div>
   );
 }
+
+export default Recipe;

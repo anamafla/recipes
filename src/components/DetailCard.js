@@ -48,8 +48,6 @@ function DetailCard(props) {
               <li className="list-group-item">
                 Calories <span>{Math.round(item.calories)}</span>
               </li>
-            </ul>
-            <ul className="list-group list-group-flush">
               {item.digest.slice(0, 3).map((item, index) => (
                 <li className="list-group-item" key={index}>
                   <span>{item.label}</span>{" "}
