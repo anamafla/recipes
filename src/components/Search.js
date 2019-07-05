@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import axios from "axios";
 import Results from "./Results";
 import Spinner from "./Spinner";
@@ -37,6 +37,13 @@ function Search(props) {
   const APP_KEY = process.env.REACT_APP_KEY;
 
   const [results, setResults] = useContext(Context);
+
+  const myRef = useRef(null);
+  const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop + 300);
+
+  useEffect(() => {
+    scrollToRef(myRef);
+  }, [isLoading]);
 
   const handleInputChange = e => {
     setQuery(e.target.value);
@@ -99,7 +106,7 @@ function Search(props) {
       <header className="masthead text-white text-center">
         <div className="overlay" />
         <div className="container">
-          <div className="row">
+          <div ref={myRef} className="row">
             <div className="col-xl-9 mx-auto">
               <h1 className="title mb-5">Recipes Searcher</h1>
               <h3 className="intro">
@@ -154,6 +161,8 @@ function Search(props) {
         </div>
       </header>
       {isError && <Error />}
+
+      <div />
 
       {isLoading ? (
         <Spinner />
